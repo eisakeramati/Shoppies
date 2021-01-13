@@ -27,14 +27,14 @@ function Input(props) {
         });
         var mdata;
         var finData = [];
-        var url = "https://www.omdbapi.com/?apikey=a5c22484&s=" + inp;
+        var url = "https://www.omdbapi.com/?apikey=&s=" + inp;
         http.get(url,function (response) {
             response.on('data', function (data) {
                 mdata = JSON.parse(data);
                 if (mdata.Search != undefined) {
                     var i;
                     for (i = 0; i < 3; i++) {
-                        url = "https://www.omdbapi.com/?apikey=a5c22484&t=" + mdata.Search[i].Title;
+                        url = "https://www.omdbapi.com/?apikey=&t=" + mdata.Search[i].Title;
                         http.get(url, function (response) {
                             response.on('data', function (data) {
                                 var temp = JSON.parse(data);
