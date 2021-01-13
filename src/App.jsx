@@ -8,7 +8,7 @@ function App() {
 
     return (<div className="body">
     <Header />
-        <Banner />
+    <Banner />
     <Main />
     </div>);
 }
