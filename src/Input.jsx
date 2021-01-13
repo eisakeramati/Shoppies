@@ -13,17 +13,13 @@ import Alert from "react-bootstrap/Alert";
 const http = require('http');
 
 function Input(props) {
-    const [inp, changeInp] = useState("");
+    const [inp, changeInp] = useState([]);
     const [jsonData, putData] = useState([]);
-    const [nomList, setNomList] = useState([]);
+    const [nomList, setNomList] = useState(localStorage.getItem('nomList')=== null ? [] : JSON.parse(localStorage.getItem('nomList')));
 
-    // useEffect(function () {
-    //     setNomList(function (prev){ JSON.parse(localStorage.getItem("list"))});
-    //     console.log('dfbgnh')
-    //     return(function () {
-    //         localStorage.setItem("list",JSON.stringify(nomList));
-    //     });
-    // }, []);
+    useEffect(function () {
+        localStorage.setItem('nomList', JSON.stringify(nomList));
+    }, [nomList]);
 
     function findMovies(event) {
         putData(prev => {
@@ -82,7 +78,6 @@ function Input(props) {
         if(event.key === 'Enter'){
             findMovies(event);
         }
-        console.log("hello");
     }
 
     return (<div style={{"margin-bottom":"40px"}}>
