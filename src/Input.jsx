@@ -78,20 +78,26 @@ function Input(props) {
         }
     }
 
+    function handleEnter(event) {
+        if(event.key === 'Enter'){
+            findMovies(event);
+        }
+        console.log("hello");
+    }
+
     return (<div style={{"margin-bottom":"40px"}}>
-        <form>
             <InputGroup className="mb-3 w-50 search-input">
                 <FormControl
                     placeholder="Search for your movie"
                     aria-label="Search for your movie"
                     aria-describedby="basic-addon2"
                     onChange={handleChange}
+                    onKeyUp={handleEnter}
                 />
                 <InputGroup.Append>
-                    <Button variant="outline-secondary" onClick={findMovies}><SearchIcon/></Button>
+                    <Button variant="outline-secondary" onClick={findMovies} ><SearchIcon/></Button>
                 </InputGroup.Append>
             </InputGroup>
-        </form>
         {nomList.length === 5 ? <Alert variant="success">You have sleceted the 5 maximum movies!</Alert> : null}
         <div className="main-container">
             <Container>
